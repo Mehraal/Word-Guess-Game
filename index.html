@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Word Guess Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <!-- <script src="game.js"></script> -->
+</head>
+<body>
+    <div id = "wordgame">
+    <p> Press any key to start!</p>
+    </div>
+
+        
+    <script type ="text/javaScript">
+         
+            
+            
+        var randomWords = ["hawaii","strawberry","thor","steak","laptop","elaborate","movies","clock"];
+        
+        var wrongWord = [];
+        var rightWords = ["---","---","---","---"];
+        var currentword = randomWords[0];
+        var userGuesses = [];
+        var wrongWordTxt = document.getElementById("wrongGuess");
+        var rightWordTxt = document.getElementById("rightGuess");
+        var livesTxt = document.getElementById("lives");
+        var loseTxt = document.getElementById("lose");
+        var winTxt = document.getElementById("win");
+        
+
+
+
+        function startGame(randomWords) {
+        var computerGuess =  randomWords[Math.floor(Math.random() * randomWords.length)];
+        var answer = [];
+            for (var i = 0; i < randomWords.length; i++) {
+        
+            answer[i]= "_";
+            }
+
+        var remainingGuess = randomWords.length;
+        while(remainingGuess>0) {
+            alert(answer.join("  "));
+            prompt(Guess-a-letter);
+        }
+
+        document.onkeyup = function(event) {
+        var userGuesses = event.key;
+        }
+
+               
+        var html =
+            "<p>rightWord " + userGuesses + "</p>" +
+            "<p>wins: " + wins + "</p>" +
+            "<p>losses: " + losses + "</p>" +
+            "<p>currentWord" + currentWord + "</p>" +
+            "<p>wrongWord" + wrongWord + "</p" ;
+
+            
+            document.querySelector("#wordgame").innerHTML = html;
+        }
+
+            // if (randomWord.indexof(userGuesses) > -1) ; {
+
+            // }
+            // else 
+            // {
+            // wrongLetter.push(userGuesses);
+            // }
+
+
+    //     }
+    //     }
+    // }
+    
+    // });
+
+</script>
+        
+
+    
+</body>
+</html>

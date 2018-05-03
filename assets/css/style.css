@@ -1,20 +1,22 @@
 body {
-    background-color: black;
-    background-image: "https://goo.gl/images/CdFWxp";
+    /* background-color: black; */
+    background-image: "https://digitalecsu.files.wordpress.com/2014/12/colorful-triangles-background.jpg";
 }
 
 .jumbotron{
     background-color: grey;
-    color:#081481;
+    color:#000000;
     margin: 40px;
     text-align: center;
-    
 }
+
 h1 {
     font-size: 100px;
-    color: rgb(69, 69, 189);
+    position:relative;
+    color: #6b6ba5;
     text-align: center;
-    border: 1px solid white;
+    border: 1px solid #74ad0b;
+
 }
 
 

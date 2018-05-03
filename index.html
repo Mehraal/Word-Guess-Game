@@ -5,71 +5,151 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Word Guess Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <!-- <script src="game.js"></script> -->
 </head>
 <body>
-    <div id = "wordgame">
-    <p> Press any key to start!</p>
+    <div class="container">
+        <h1>Word-Game</h1>
+        <div class="jumbotron">
+            <h2>Press Any Key to Start</h2>
+        
+     <!-- <p id="currentword"></p>
+    <p id="my lives"></p> -->
+    
+    
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+        <button type="button" class="btn btn-secondary">A</button>
+        <button type="button" class="btn btn-secondary">B</button>
+        <button type="button" class="btn btn-secondary">C</button>
+        <button type="button" class="btn btn-secondary">D</button>
     </div>
+    <div class="btn-group mr-2" role="group" aria-label="Second group">
+        <button type="button" class="btn btn-secondary">E</button>
+        <button type="button" class="btn btn-secondary">F</button>
+        <button type="button" class="btn btn-secondary">G</button>
+    </div>
+    <div class="btn-group mr-2" role="group" aria-label="Third group">
+        <button type="button" class="btn btn-secondary">H</button>
+        <button type="button" class="btn btn-secondary">I</button>
+        <button type="button" class="btn btn-secondary">J</button>
+        <button type="button" class="btn btn-secondary">K</button>
+    </div>
+    <div class="btn-group mr-2" role="group" aria-label="Fouth group">
+        <button type="button" class="btn btn-secondary">L</button>
+        <button type="button" class="btn btn-secondary">M</button>
+        <button type="button" class="btn btn-secondary">N</button>
+        <button type="button" class="btn btn-secondary">O</button>
+    </div>
+    <div class="btn-group mr-2" role="group" aria-label="Fifth group">
+        <button type="button" class="btn btn-secondary">P</button>
+        <button type="button" class="btn btn-secondary">Q</button>
+        <button type="button" class="btn btn-secondary">R</button>
+    </div>
+    <div class="btn-group mr-2" role="group" aria-label="sixth group">
+        <button type="button" class="btn btn-secondary">S</button>
+        <button type="button" class="btn btn-secondary">T</button>
+        <button type="button" class="btn btn-secondary">U</button>
+        <button type="button" class="btn btn-secondary">V</button>
+    </div>
+    <div class="btn-group mr-2" role="group" aria-label="seventh group">
+        <button type="button" class="btn btn-secondary">W</button>
+        <button type="button" class="btn btn-secondary">X</button>
+        <button type="button" class="btn btn-secondary">Y</button>
+        <button type="button" class="btn btn-secondary">Z</button>
+    </div>
+    
+   
+    <button type="button" class="btn btn-primary">Play Again</button>
+
+    </div>
+    </div>
+   
+
+    <script type ="text/javaScript">
+    var buttons = function() {
+   
+    function setLetter() {
+        document.getElementById("setLetter").id = function() {
+            myfunction };
 
         
-    <script type ="text/javaScript">
-         
-            
-            
-        var randomWords = ["hawaii","strawberry","thor","steak","laptop","elaborate","movies","clock"];
-        
+        var randomWords = ["hawaii","strawberry","bells","steak","laptop","elaborate","movies","clock"];
         var wrongWord = [];
         var rightWords = ["---","---","---","---"];
         var currentword = randomWords[0];
         var userGuesses = [];
         var wrongWordTxt = document.getElementById("wrongGuess");
         var rightWordTxt = document.getElementById("rightGuess");
-        var livesTxt = document.getElementById("lives");
-        var loseTxt = document.getElementById("lose");
-        var winTxt = document.getElementById("win");
+        var livesLeft = document.getElementById("lives");
+        var lose = document.getElementById("youLose");
+        var win = document.getElementById("youWin");
+
+       
+        // alphabet = document.createElement('ul');
+
+        }
+        }
+  
         
-
-
-
-        function startGame(randomWords) {
-        var computerGuess =  randomWords[Math.floor(Math.random() * randomWords.length)];
+    function startGame() {
+        var computerGuess =  randomWords[Math.floor(Math.random) * randomWords.length];
         var answer = [];
             for (var i = 0; i < randomWords.length; i++) {
         
             answer[i]= "_";
             }
-
-        var remainingGuess = randomWords.length;
-        while(remainingGuess>0) {
-            alert(answer.join("  "));
-            prompt(Guess-a-letter);
         }
+        // if(userGuesses == randomWords) {
+        //     rightWord++;
+        // }
+        // else{ 
+           
+        // }
+        
 
-        document.onkeyup = function(event) {
-        var userGuesses = event.key;
-        }
+        // var remainingGuess = randomWords.length;
+        // while(remainingGuess>0) {
+        //     alert(answer.join("  "));
+        //     prompt(Guess-a-letter);
+        // }
+
+        // document.onkeyup = function(event) {
+        // var userGuesses = event.key;
+        // }
 
                
-        var html =
-            "<p>rightWord " + userGuesses + "</p>" +
-            "<p>wins: " + wins + "</p>" +
-            "<p>losses: " + losses + "</p>" +
-            "<p>currentWord" + currentWord + "</p>" +
-            "<p>wrongWord" + wrongWord + "</p" ;
+        // var html =
+        //     "<p>rightWord " + userGuesses + "</p>" +
+        //     "<p>wins: " + wins + "</p>" +
+        //     "<p>losses: " + losses + "</p>" +
+        //     "<p>currentWord" + currentWord + "</p>" +
+        //     "<p>wrongWord" + wrongWord + "</p" ;
 
             
-            document.querySelector("#wordgame").innerHTML = html;
-        }
+        //     document.querySelector"#wordgame").innerHTML = html;
 
-            // if (randomWord.indexof(userGuesses) > -1) ; {
+    // }
+    // };
 
-            // }
-            // else 
-            // {
-            // wrongLetter.push(userGuesses);
-            // }
+
+    // window.onload = function ) {
+
+        // var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+        // 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+        // 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+        
+        
+
+    //         if randomWord.indexofuserGuesses) > -1) ; {
+
+    //         }
+    //         else 
+    //         {
+    //         wrongLetter.pushuserGuesses);
+    //         }
 
 
     //     }

@@ -11,156 +11,111 @@
     <!-- <script src="game.js"></script> -->
 </head>
 <body>
-    <div class="container">
-        <h1>Word-Guess-Game</h1>
-        <div class="jumbotron">
-            <h2>Press Any Key to Start</h2>
+    <h1>Word-Guess-Game</h1>
+    <div id="container">
+        <!-- <h1>Word-Guess-Game</h1> -->
+        <img id="Word-Guess-Game" alt="guess the word" src="http://guesstheword.net/img/games/whats-the-word-app-icon.png"><br>
+        CURRENT WORD:
+        <span id="theWord"></span>
+        <!-- <br> LETTSE;
+        <span id="letterBlanks"></span> -->
+        <br> WINS:
+        <span id="winTotal"></span>
+        <br> LOSSES:
+        <span id="lossCount"></span>
+        <br> LIVES LEFT:
+        <span id="user-lives">10</span>
+        <br> LETTERS GUESSED:
+        <span id="lettersGuessed"></span>
+        <br>
+
+    </div>
         
-     <!-- <p id="currentword"></p>
-    <p id="my lives"></p> -->
-    
-    
-    <div class="btn-group mr-2" role="group" aria-label="First group">
-        <button type="button" class="btn btn-secondary">A</button>
-        <button type="button" class="btn btn-secondary">B</button>
-        <button type="button" class="btn btn-secondary">C</button>
-        <button type="button" class="btn btn-secondary">D</button>
-    </div>
-    <div class="btn-group mr-2" role="group" aria-label="Second group">
-        <button type="button" class="btn btn-secondary">E</button>
-        <button type="button" class="btn btn-secondary">F</button>
-        <button type="button" class="btn btn-secondary">G</button>
-    </div>
-    <div class="btn-group mr-2" role="group" aria-label="Third group">
-        <button type="button" class="btn btn-secondary">H</button>
-        <button type="button" class="btn btn-secondary">I</button>
-        <button type="button" class="btn btn-secondary">J</button>
-        <button type="button" class="btn btn-secondary">K</button>
-    </div>
-    <div class="btn-group mr-2" role="group" aria-label="Fouth group">
-        <button type="button" class="btn btn-secondary">L</button>
-        <button type="button" class="btn btn-secondary">M</button>
-        <button type="button" class="btn btn-secondary">N</button>
-        <button type="button" class="btn btn-secondary">O</button>
-    </div>
-    <div class="btn-group mr-2" role="group" aria-label="Fifth group">
-        <button type="button" class="btn btn-secondary">P</button>
-        <button type="button" class="btn btn-secondary">Q</button>
-        <button type="button" class="btn btn-secondary">R</button>
-    </div>
-    <div class="btn-group mr-2" role="group" aria-label="sixth group">
-        <button type="button" class="btn btn-secondary">S</button>
-        <button type="button" class="btn btn-secondary">T</button>
-        <button type="button" class="btn btn-secondary">U</button>
-        <button type="button" class="btn btn-secondary">V</button>
-    </div>
-    <div class="btn-group mr-2" role="group" aria-label="seventh group">
-        <button type="button" class="btn btn-secondary">W</button>
-        <button type="button" class="btn btn-secondary">X</button>
-        <button type="button" class="btn btn-secondary">Y</button>
-        <button type="button" class="btn btn-secondary">Z</button>
-    </div>
-    
-   
-    <button type="button" class="btn btn-primary">Play Again</button>
-
-    </div>
-    </div>
-   
-
     <script type ="text/javaScript">
-    var buttons = function() {
-   
-    function setLetter() {
-        document.getElementById("setLetter").id = function() {
-            myfunction };
-
+        var words = ["jump", "campus", "johnny", "coding", "easy", "extremely", "dictionary","elaborate","discover"];
+        // var alphabetArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+        // var alphabet = getAlphabetArray();
+        var wins = 0,
+            losses = 0,
+            correct = 0,
+            lives = 10,
+            lettersGuessed = [],
+            letterBlanks = [],
+            randomWord = "";
         
-        var randomWords = ["hawaii","strawberry","bells","steak","laptop","elaborate","movies","clock"];
-        var wrongWord = [];
-        var rightWords = ["---","---","---","---"];
-        var currentword = randomWords[0];
-        var userGuesses = [];
-        var wrongWordTxt = document.getElementById("wrongGuess");
-        var rightWordTxt = document.getElementById("rightGuess");
-        var livesLeft = document.getElementById("lives");
-        var lose = document.getElementById("youLose");
-        var win = document.getElementById("youWin");
+        var word = "timeup";
+        function gameOver() {
+            if (letterBlanks.indexOf("_") === -1) {
+                wins++;
+                alert("YA YOU WON!");
+            } else {
+                losses++;
+                alert("SO SAD... YOU LOST")
+            }
 
-       
-        // alphabet = document.createElement('ul');
-
+            document.getElementById("winCount").innerHTML = wins;
+            document.getElementById("lossCount").innerHTML = losses;
+            //Let's play again!
+            restartTheGame();
         }
+        function checkGameOver() {
+            return livesLeft === 0 || correct == 6;
         }
-  
-        
-    function startGame() {
-        var computerGuess =  randomWords[Math.floor(Math.random) * randomWords.length];
-        var answer = [];
-            for (var i = 0; i < randomWords.length; i++) {
-        
-            answer[i]= "_";
+        function isValidLetter(letter) {
+            return alphabet.indexOF(letter) > -1;
+        }
+        function updateWrongGuess() {
+            livesLeft--;
+            document.getElementById("lettersGuessed").innerHTML = lettersGuessed.join(" ");
+            document.getElementById("user-lives").innerHTML = livesLeft;
+        }
+        function inititalizGame() {
+            livesLeft = 10;
+            lettersGuessed = [];
+            letterBlanks = [];
+            randomWord = words[Math.floor((Math.random() = words.length))];
+            for (var i = 0; i < randomWord.length; i++) {
+                letterBlanks.push("_");
             }
         }
-        // if(userGuesses == randomWords) {
-        //     rightWord++;
-        // }
-        // else{ 
-           
-        // }
-        
+        function getAlphabetArray() {
+            var alphabetArray = [];
+            for (var i = "a".charCodeAt(0); i <= "z".charCodeAt(0); i++) {
+                alphabetArray.push(String.fromCharCode(i));
+            }
+            return alphabetArray;
+        }
 
-        // var remainingGuess = randomWords.length;
-        // while(remainingGuess>0) {
-        //     alert(answer.join("  "));
-        //     prompt(Guess-a-letter);
-        // }
+        document.onkeyup = function (event) {
 
-        // document.onkeyup = function(event) {
-        // var userGuesses = event.key;
-        // }
+            var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-               
-        // var html =
-        //     "<p>rightWord " + userGuesses + "</p>" +
-        //     "<p>wins: " + wins + "</p>" +
-        //     "<p>losses: " + losses + "</p>" +
-        //     "<p>currentWord" + currentWord + "</p>" +
-        //     "<p>wrongWord" + wrongWord + "</p" ;
+            if (word.indexOf(userGuess) > -1) {
+                alert("You guessed a correct letter");
+                document.getElementById('theWord').innerHTML += userGuess;
+                document.getElementById('lettersGuessed').innerHTML += userGuess;
+                correct = correct + 1;
+                if (correct == 6) {
+                    alert("YOU WON");
+                    inititalizGame();
+                }
+            } else {
+                lives = lives - 1;
+                if (lives == 0) {
+                    alert("YOU LOSE");
+                } else {
+                    alert("WRONG GUESS! YOU NOW HAVE " + lives + " LIVES.");
+                    document.getElementById('lettersGuessed').innerHTML += userGuess;
+                    document.getElementById('user-lives').innerHTML = lives;
+                }
 
-            
-        //     document.querySelector"#wordgame").innerHTML = html;
+            }
 
-    // }
-    // };
-
-
-    // window.onload = function ) {
-
-        // var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-        // 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-        // 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-        
-        
-
-    //         if randomWord.indexofuserGuesses) > -1) ; {
-
-    //         }
-    //         else 
-    //         {
-    //         wrongLetter.pushuserGuesses);
-    //         }
-
-
-    //     }
-    //     }
-    // }
+        }
+    </script>
     
-    // });
-
-</script>
-        
+    </body>
+    
+    </html>
 
     
-</body>
-</html>

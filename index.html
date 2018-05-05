@@ -11,14 +11,12 @@
     <!-- <script src="game.js"></script> -->
 </head>
 <body>
-    <h1>Word-Guess-Game</h1>
+    <h1>Word Guess Game</h1>
     <div id="container">
         <!-- <h1>Word-Guess-Game</h1> -->
         <img id="Word-Guess-Game" alt="guess the word" src="http://guesstheword.net/img/games/whats-the-word-app-icon.png"><br>
         CURRENT WORD:
         <span id="theWord"></span>
-        <!-- <br> LETTSE;
-        <span id="letterBlanks"></span> -->
         <br> WINS:
         <span id="winTotal"></span>
         <br> LOSSES:
@@ -32,7 +30,7 @@
     </div>
         
     <script type ="text/javaScript">
-        var words = ["jump", "campus", "johnny", "coding", "easy", "extremely", "dictionary","elaborate","discover"];
+        var randomWords = ["jump", "campus", "johnny", "coding", "easy", "extremely", "dictionary","elaborate","discover"];
         // var alphabetArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         // var alphabet = getAlphabetArray();
         var wins = 0,
@@ -45,7 +43,7 @@
         
         var word = "timeup";
         function gameOver() {
-            if (letterBlanks.indexOf("_") === -1) {
+            if (letterBlanks.indexOf("_") === 0) {
                 wins++;
                 alert("YA YOU WON!");
             } else {
@@ -53,17 +51,17 @@
                 alert("SO SAD... YOU LOST")
             }
 
-            document.getElementById("winCount").innerHTML = wins;
-            document.getElementById("lossCount").innerHTML = losses;
+            document.getElementById("winCount").innerHTML = wins.join(" ");
+            document.getElementById("lossCount").innerHTML = losses.join(" ");
             //Let's play again!
             restartTheGame();
         }
         function checkGameOver() {
             return livesLeft === 0 || correct == 6;
         }
-        function isValidLetter(letter) {
-            return alphabet.indexOF(letter) > -1;
-        }
+        // function isValidLetter(letter) {
+        //     return alphabet.indexOF(letter) > -1;
+        // }
         function updateWrongGuess() {
             livesLeft--;
             document.getElementById("lettersGuessed").innerHTML = lettersGuessed.join(" ");
@@ -73,8 +71,8 @@
             livesLeft = 10;
             lettersGuessed = [];
             letterBlanks = [];
-            randomWord = words[Math.floor((Math.random() = words.length))];
-            for (var i = 0; i < randomWord.length; i++) {
+            randomWords = words[Math.floor((Math.random() = randomWords.length))];
+            for (var i = 0; i < randomWords.length; i++) {
                 letterBlanks.push("_");
             }
         }
@@ -90,7 +88,7 @@
 
             var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-            if (word.indexOf(userGuess) > -1) {
+            if (randomWord.indexOf(userGuess) > 0) {
                 alert("You guessed a correct letter");
                 document.getElementById('theWord').innerHTML += userGuess;
                 document.getElementById('lettersGuessed').innerHTML += userGuess;
@@ -100,7 +98,7 @@
                     inititalizGame();
                 }
             } else {
-                lives = lives - 1;
+                lives = lives - 1; 
                 if (lives == 0) {
                     alert("YOU LOSE");
                 } else {
@@ -110,8 +108,9 @@
                 }
 
             }
-
         }
+
+        
     </script>
     
     </body>

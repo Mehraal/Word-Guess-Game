@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    <!-- <script src="game.js"></script> -->
+    <script src="game.js"></script>
 </head>
 <body>
+    <!-- <img id="myImg" src="http://www.magma.ca/~cagraha/textures/hangman.jpg"><br>
+     -->
     <h1>Word Guess Game</h1>
+    <h2>Hangman</h2>
+
     <div id="container">
-        <!-- <h1>Word-Guess-Game</h1> -->
         <img id="Word-Guess-Game" alt="guess the word" src="http://guesstheword.net/img/games/whats-the-word-app-icon.png"><br>
+        
         CURRENT WORD:
         <span id="theWord"></span>
         <br> WINS:
@@ -30,9 +34,9 @@
     </div>
         
     <script type ="text/javaScript">
-        var randomWords = ["jump", "campus", "johnny", "coding", "easy", "extremely", "dictionary","elaborate","discover"];
-        // var alphabetArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-        // var alphabet = getAlphabetArray();
+        var word = ["jump", "campus", "johnny", "coding", "easy", "extremely", "dictionary","elaborate","discover"];
+        var alphabetArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+        var alphabet = getAlphabetArray();
         var wins = 0,
             losses = 0,
             correct = 0,
@@ -45,14 +49,14 @@
         function gameOver() {
             if (letterBlanks.indexOf("_") === 0) {
                 wins++;
-                alert("YA YOU WON!");
+                console.log("YA YOU WON!");
             } else {
                 losses++;
-                alert("SO SAD... YOU LOST")
+                console.log("SO SAD... YOU LOST")
             }
 
-            document.getElementById("winCount").innerHTML = wins.join(" ");
-            document.getElementById("lossCount").innerHTML = losses.join(" ");
+            document.getElementById("winCount").innerHTML = wins;
+            document.getElementById("lossCount").innerHTML = losses;
             //Let's play again!
             restartTheGame();
         }
@@ -88,27 +92,28 @@
 
             var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-            if (randomWord.indexOf(userGuess) > 0) {
-                alert("You guessed a correct letter");
+            if (word.indexOf(userGuess) > 0) {
+                console.log("You guessed a correct letter");
                 document.getElementById('theWord').innerHTML += userGuess;
                 document.getElementById('lettersGuessed').innerHTML += userGuess;
                 correct = correct + 1;
                 if (correct == 6) {
-                    alert("YOU WON");
+                    console.log("YOU WON");
                     inititalizGame();
                 }
             } else {
                 lives = lives - 1; 
                 if (lives == 0) {
-                    alert("YOU LOSE");
+                    console.log("YOU LOSE");
                 } else {
-                    alert("WRONG GUESS! YOU NOW HAVE " + lives + " LIVES.");
+                    console.log("WRONG GUESS! YOU NOW HAVE " + lives + " LIVES.");
                     document.getElementById('lettersGuessed').innerHTML += userGuess;
                     document.getElementById('user-lives').innerHTML = lives;
                 }
 
             }
         }
+        // document.body.style.backgroundImage = "url('http://www.magma.ca/~cagraha/textures/hangman.jpg')";
 
         
     </script>
